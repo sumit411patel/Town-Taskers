@@ -1,0 +1,188 @@
+{% extends 'workers/common/layout.html' %}
+{% block content %}
+
+{% load static %}
+<section class="hero-area bg-1 text-center overly">
+
+	<!-- Container Start -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<!-- Header Contetnt -->
+				<div class="content-block">
+					<h1>Find Customers Near You </h1>
+					<p>Join the millions who buy and sell from each other <br> everyday in local communities around the world</p>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Container End -->
+	</section>
+
+
+<!--===========================================
+=            Popular deals section            =
+============================================-->
+
+<section class="popular-deals section bg-gray">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="section-title">
+					<h2 style="font-size: 35px; background: -webkit-linear-gradient(Blue, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;">Services</h2>
+					<h3 style="font-weight-bold; font-size: 25px;" >One stop solution for your services! Book Any Service Anytime.</h3>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4">
+				<div class="product-item bg-light">
+					<div class="card">
+						<div class="thumb-content">
+									<!-- <div class="price">$200</div> -->
+							<a href="/user/all_electricians">
+								<img class="card-img-top img-fluid" src="{% static 'user/images/home/e3.webp' %}"alt="Card image cap">
+							</a>
+						</div>
+						<div class="card-body">
+							<h4 class="card-title"><a href="/user/all_electricians">Electrical</a></h4>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="product-item bg-light">
+					<div class="card">
+						<div class="thumb-content">
+									<!-- <div class="price">$200</div> -->
+							<a href="/user/all_carpenters">
+								<img class="card-img-top img-fluid" src="{% static 'user/images/home/n5.jpg' %}"alt="Card image cap">
+							</a>
+						</div>
+						<div class="card-body">
+							<h4 class="card-title"><a href="/user/all_carpenters">Carpenter</a></h4>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="product-item bg-light">
+					<div class="card">
+						<div class="thumb-content">
+									<!-- <div class="price">$200</div> -->
+							<a href="/user/all_plumbers">
+								<img class="card-img-top img-fluid" src="{% static 'user/images/home/p4.jpg' %}"alt="Card image cap">
+							</a>
+						</div>
+						<div class="card-body">
+							<h4 class="card-title"><a href="/user/all_plumbers">Plumber</a></h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="product-item bg-light">
+					<div class="card">
+						<div class="thumb-content">
+									<!-- <div class="price">$200</div> -->
+							<a href="/user/all_painters">
+								<img class="card-img-top img-fluid" src="{% static 'user/images/home/paint3.jpg' %}"alt="Card image cap">
+							</a>
+						</div>
+						<div class="card-body">
+							<h4 class="card-title"><a href="/user/all_painters">Painter</a></h4>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="col-md-4">
+				<div class="product-item bg-light">
+					<div class="card">
+						<div class="thumb-content">
+								<a href="/user/search_worker">
+								<img class="card-img-top img-fluid" src="{% static 'user/images/home/carpenter-3.png' %}"alt="Card image cap">
+							</a>
+						</div>
+						<div class="card-body">
+							<h4 class="card-title"><a href="/user/search_worker">Carpenter</a></h4>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="product-item bg-light">
+					<div class="card">
+						<div class="thumb-content">
+							<a href="/user/search_worker">
+								<img class="card-img-top img-fluid" src="{% static 'user/images/home/plumber.png' %}"alt="Card image cap">
+							</a>
+						</div>
+						<div class="card-body">
+							<h4 class="card-title"><a href="/user/search_worker">Plumber</a></h4>
+						</div>
+					</div>
+				</div>
+			</div> -->
+		</div>
+		
+	</div>
+</section>
+
+
+
+<!--==========================================
+=            Newsletter Section            =
+===========================================-->
+
+<!--  <div class="newsletter-bg padding-top-90 padding-bottom-90">
+      <div class="container">
+          <div class="row">
+              <div class="col-xl-5 col-lg-6">
+                  <div class="newsletter-wrap">
+                      <h3>Newsletter</h3>
+                      <p>Get e-mail updates about our latest news and Special offers. We don’t send spam so don’t
+                          worry.</p>
+                      <form action="#" class="newsletter-form form-inline">
+                          <div class="form-group">
+                              <input type="text" class="form-control" placeholder="Email address...">
+                          </div>
+                          <button class="btn button">Submit<i class="fas fa-caret-right"></i></button>
+                          <p class="newsletter-error">0 - Please enter a value</p>
+                          <p class="newsletter-success">Thank you for subscribing!</p>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+ -->
+<!--====================================
+=            Call to Action            =
+=====================================-->
+
+<!-- <section class="call-to-action overly bg-3 section-sm">
+	 Container Start -->
+	<!-- <div class="container">
+		<div class="row justify-content-md-center text-center">
+			<div class="col-md-8">
+				<div class="content-holder">
+					<h2>Start today to get more exposure and
+					grow your business</h2>
+					<ul class="list-inline mt-30">
+						<li class="list-inline-item"><a class="btn btn-main" href="ad-listing.html">Add Listing</a></li>
+						<li class="list-inline-item"><a class="btn btn-secondary" href="category.html">Browser Listing</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div> -->
+	<!-- Container End -->
+<!-- </section> -->
+
+{% endblock %}

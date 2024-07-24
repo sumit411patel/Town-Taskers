@@ -1,0 +1,89 @@
+{% extends 'myadmin/common/layout.html' %}
+{% load static %}
+
+{% block title %} Workers {% endblock %}
+
+{% block content %}
+<div class="content-wrapper">
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title text-center">Worker Details</h4>
+            <hr>
+            <div style="text-align: center;">
+              <img src="/media/upload/{{workers.worker_image}}" style="height: 250px;width: 250px;margin: 25px 0px;">
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Field_Name</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="active">
+                          <th scope="row">id</th>
+                          <td>{{workers.id}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">First Name</th>
+                          <td>{{workers.worker.first_name}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Last Name</th>
+                          <td>{{workers.worker.last_name}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Email</th>
+                          <td>{{workers.worker.email}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Username</th>
+                          <td>{{workers.worker.username}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Contact</th>
+                          <td>{{workers.contact}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">DOB</th>
+                          <td>{{workers.date_of_birth}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Gender</th>
+                          <td>{{workers.gender}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Address</th>
+                          <td>{{workers.address}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">City</th>
+                          <td>{{workers.city.city_name}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Category</th>
+                          <td>{{workers.category.category_name}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Sub Category</th>
+                          <td>{{workers.subcategory.sub_category_name}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Work Desc</th>
+                          <td>{{workers.work_description}}</td>
+                        </tr>
+                      </tbody>
+                </table>
+                <br>
+                <a href="/myadmin/worker_status_approve/{{workers.id}}" class="btn btn-success">Approve</a>
+                <a href="/myadmin/worker_status_reject/{{workers.id}}" class="btn btn-danger ml-3">Reject</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,128 @@
+{% extends 'user/common/layout.html' %}
+{% block content %}
+
+{% load static %}
+
+<section class="page-title">
+  <!-- Container Start -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 text-center">
+        <!-- Title text -->
+        <h3>Application</h3>
+      </div>
+    </div>
+  </div>
+  <!-- Container End -->
+</section>
+
+<section class="user-profile section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="sidebar">
+          <!-- User Widget -->
+          <div class="widget user">
+            <!-- User Image -->
+            <div class="image d-flex justify-content-center">
+              <img src="/media/upload/{{result1.user_image}}" alt="" class="">
+            </div>
+            <!-- User Name -->
+            <h5 class="text-center">{{result1.user.first_name}} {{result1.user.last_name}}</h5>
+          </div>
+          <!-- Dashboard Links -->
+          <div class="widget user-dashboard-menu">
+            <ul>
+              <li><a href="/user/post_problem">Add Post</a></li>
+              <li><a href="/user/all_requests">My Posts</a></li>
+              <li><a href="/user/changepass">Change Password</a></li>
+              <li><a href="/user/logout"><i class="fa fa-cog"></i>Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">    <!-- Row Start -->
+    <div class="row">
+    <div class="col-lg-12 col-md-12">
+        <!-- Recently Favorited -->
+    <div class="widget dashboard-container my-adslist">
+    	<h3 class="widget-header">Available Worker </h3>
+        <table class="table table-responsive product-dashboard-table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th class="">Details</th>
+                <th class="text-center">Reason</th>
+                <th class="text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for row in result %}
+              <tr>
+                <td class="product-thumb">
+                        <img width="80px" height="auto" src="/media/upload/{{row.worker.worker_profile.worker_image}}">
+                    </td>
+                <td class="product-details ">
+                  <span class="add-id"><strong>Name:</strong>{{row.worker.first_name}}</span>
+                  <span class="add-id"><strong>Address:</strong>{{row.worker.worker_profile.address}}</span>
+                  <span class=""><strong>Contact :</strong><time>{{row.worker.worker_profile.contact}}</time> </span>
+                  <span class=""><strong>City :</strong><time>{{row.worker.worker_profile.city.city_name}}</time> </span>
+                  <span class=""><strong>Applied :</strong>{{row.application}}</span>
+                </td>
+                <td class="product-category text-center"><span class="categories">{{row.reason}}</span></td>
+                <td class="action text-center" data-title="Action">
+                  <div class="">
+                    <ul class="list-inline justify-content-center">
+                      <li class="list-inline-item">
+                        <a data-toggle="tooltip" data-placement="top" title="Hire" class="view" href="/user/hire/{{row.user_post.id}}/{{row.worker_id}}">
+                          <i class="fa fa-check"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a data-toggle="tooltip" data-placement="top" title="Reject" class="delete" href="/user/applications_delete/{{row.id}}">
+                          <i class="fa fa-trash"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+    </div>
+</div>
+
+        <!-- pagination -->
+   	<!-- <div class="pagination justify-content-center">
+       	<nav aria-label="Page navigation example">
+           	<ul class="pagination">
+              	<li class="page-item">
+                	<a class="page-link" href="dashboard.html" aria-label="Previous">
+                  		<span aria-hidden="true">&laquo;</span>
+                  		<span class="sr-only">Previous</span>
+                	</a>
+              	</li>
+              	<li class="page-item"><a class="page-link" href="dashboard.html">1</a></li>
+              	<li class="page-item active"><a class="page-link" href="dashboard.html">2</a></li>
+              	<li class="page-item"><a class="page-link" href="dashboard.html">3</a></li>
+             	<li class="page-item">
+                	<a class="page-link" href="dashboard.html" aria-label="Next">
+                  		<span aria-hidden="true">&raquo;</span>
+                  		<span class="sr-only">Next</span>
+                	</a>
+              	</li>
+           	</ul>
+       	</nav>
+   	</div> -->
+        <!-- pagination -->
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+{% endblock %}
+

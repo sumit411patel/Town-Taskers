@@ -1,0 +1,54 @@
+{% extends 'myadmin/common/layout.html' %}
+{% load static %}
+
+{% block title %} Area {% endblock %}
+
+{% block content %}
+<script>
+  function data(){
+  var j=document.getElementById("cityname").value;
+  var k=document.getElementById("area").value;
+   if(k=="")
+   {
+    alert("please enter area name")
+    return false;
+   }
+   if(j=="")
+   {
+    alert("please select city")
+    return false;
+   }
+   else{
+    return true;
+   }
+  }
+</script>
+<div class="content-wrapper">
+    <div class="row">
+      <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title text-center">Add Area</h4>
+            <form class="forms-sample" novalidate="novalidate" onsubmit="return data()" method="post" action="/myadmin/add_area_store" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="form-group">
+                <label>Area Name</label>
+                <input type="text" name="area" id="area" class="form-control" required pattern="[A-Za-z]{4,32}">
+              </div>
+              <div class="form-group">
+                <label for="exampleSelectGender">Select City</label>
+                <select name="cityname" id="cityname" class="form-control" required>
+                    <option value="">-- Select City --</option>
+                    {% for cy in cities %}
+                    <option value="{{cy.id}}">{{cy.city_name}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              <button type="submit" class="btn btn-primary mr-2">Add Area</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

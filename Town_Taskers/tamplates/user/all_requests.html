@@ -1,0 +1,114 @@
+{% extends 'user/common/layout.html' %}
+{% block content %}
+
+
+<section class="page-title">
+  <!-- Container Start -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 text-center">
+        <!-- Title text -->
+        <h3>All Posts</h3>
+      </div>
+    </div>
+  </div>
+  <!-- Container End -->
+</section>
+
+<section class="dashboard section">
+  <!-- Container Start -->
+  <div class="container">
+    <!-- Row Start -->
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="sidebar">
+          <!-- User Widget -->
+          <div class="widget user">
+            <!-- User Image -->
+            <div class="image d-flex justify-content-center">
+              <img src="/media/upload/{{result1.user_image}}" alt="" class="">
+            </div>
+            <!-- User Name -->
+            <h5 class="text-center">{{result1.user.first_name}} {{result1.user.last_name}}</h5>
+            <div class="text-center">
+              <a href="/user/user_edit_profile" class="btn btn-main-sm">Edit Profile</a>
+            </div> 
+          </div>
+          <!-- Dashboard Links -->
+          <div class="widget user-dashboard-menu">
+            <ul>
+              <li class="active">
+                <a href="/user/all_requests"><i class="fa fa-user"></i>All Posts</a></li>
+              <li>
+                <a href="/user/post_problem"><i class="fa fa-bookmark-o"></i>Add Post</a>
+              </li>
+              <li>
+                <a href="/user/changepass"><i class="fa fa-file-archive-o"></i>Change Password</a>
+              </li>
+              <li>
+                <a href="/user/logout"><i class="fa fa-cog"></i> Logout</a>
+              </li>
+              <!-- <li>
+                <a href="#!" data-toggle="modal" data-target="#deleteaccount"><i class="fa fa-power-off"></i>Delete Account</a>
+              </li> -->
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <!-- Recently Favorited -->
+        <div class="widget dashboard-container my-adslist">
+          <h3 class="widget-header">My Posts</h3>
+          <table class="table table-responsive product-dashboard-table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Details</th>
+                <th class="text-center">Description</th>
+                <th class="text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+               {% for r in requests %}
+              <tr>
+                <td class="product-thumb">
+                  <img width="80px" height="auto" src="/media/upload/{{r.problem_image}}" alt="image description"></td>
+                <td class="product-details">
+                  <span class="add-id"><strong>Subject:</strong> {{r.subject}}</span>
+                  <span><strong>City :</strong><time>{{r.city.city_name}}</time> </span>
+                  <span><strong>Area :</strong>{{r.area.area_name}}</span>
+                </td>
+                <td class="product-category"><span class="categories">{{r.problem_description}}</span></td>
+                <td class="action" data-title="Action">
+                  <div class="">
+                    <ul class="list-inline justify-content-center">
+                      <li class="list-inline-item">
+                        <a data-toggle="tooltip" data-placement="top" title="View" class="view" href="/user/view_my_request/{{r.id}}">
+                          <i class="fa fa-eye"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a data-toggle="tooltip" data-placement="top" title="Applications" class="view" href="/user/applications/{{r.id}}">
+                          <i class="fa fa-briefcase"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+        </div>
+
+
+      </div>
+    </div>
+    <!-- Row End -->
+  </div>
+  <!-- Container End -->
+</section>
+
+
+{% endblock %}

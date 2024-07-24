@@ -1,0 +1,47 @@
+{% extends 'myadmin/common/layout.html' %}
+{% load static %}
+
+{% block title %} Workers {% endblock %}
+
+{% block content %}
+<div class="content-wrapper">
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title text-center">Workers</h4>
+            <hr>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                          <th>id</th>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>Email</th>
+                          <th>User Name</th>
+                          <th>category</th>
+                          <th>View Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      {% for row in workers %}
+                      <tr class="active">
+                        <th scope="row">{{row.id}}</th>
+                        <td>{{row.worker.first_name}}</td>
+                        <td>{{row.worker.last_name}}</td>
+                        <td>{{row.worker.email}}</td>
+                        <td>{{row.worker.username}}</td>
+                        <td>{{row.category.category_name}}</td>
+                        <th><a href="/myadmin/view_all_workers/{{row.id}}">View Details</a></th>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

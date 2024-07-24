@@ -1,0 +1,54 @@
+{% extends 'myadmin/common/layout.html' %}
+{% load static %}
+
+{% block title %} Sub Catagories {% endblock %}
+
+{% block content %}
+<script>
+  function data(){
+  var j=document.getElementById("categoryname").value;
+  var k=document.getElementById("subcategory").value;
+   if(j=="")
+   {
+    alert("please select category")
+    return false;
+   }
+   if(k=="")
+   {
+    alert("please enter subcategory")
+    return false;
+   }
+   else{
+    return true;
+   }
+  }
+</script>
+<div class="content-wrapper">
+    <div class="row">
+      <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title text-center">Add Sub category</h4>
+            <form class="forms-sample" novalidate="novalidate" onsubmit="return data()" method="post" action="/myadmin/add_sub_category_store">
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="exampleInputName1">Sub category Name</label>
+                <input type="text" name="subcategory" id="subcategory" class="form-control" placeholder="Enter Subcategory Name" required pattern="[A-Za-z]{4,32}">
+              </div>
+              <div class="form-group">
+                <label for="exampleSelectGender">Select category</label>
+                <select name="categoryname" id="categoryname" class="form-control" required>
+                    <option value="">-- Select Category --</option>
+                    {% for c in categories %}
+                    <option value="{{c.id}}">{{c.category_name}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Add Sub Category</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

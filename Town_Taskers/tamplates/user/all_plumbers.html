@@ -1,0 +1,69 @@
+{% extends 'user/common/layout.html' %}
+{% block content %}
+
+
+<section class="page-title">
+  <!-- Container Start -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 text-center">
+        <!-- Title text -->
+        <h3>All Plumbers</h3>
+      </div>
+    </div>
+  </div>
+  <!-- Container End -->
+</section>
+
+<section class="dashboard section">
+  <!-- Container Start -->
+  <div class="container">
+    <!-- Row Start -->
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <!-- Recently Favorited -->
+        <div class="widget dashboard-container my-adslist">
+          <h5 class="widget-header" style="font-size: 30px; font-weight:bolder; background: -webkit-linear-gradient(Blue, black);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;">Plumbers</h5>
+          <table class="table table-responsive product-dashboard-table">
+            <thead>
+              <tr>
+                <th style="font-size:20px;">Image</th>
+                <th  style="padding-left: 130px; font-size:20px;">Details</th>
+                <th class="text-center" style="padding-left: 100px; font-size: 20px;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+               {% for w in result %}
+              <tr>
+                <td class="product-thumb">
+                  <img width="200" height="150" style="border-radius: 50%" src="/media/upload/{{w.worker_image}}" alt="image description"></td>
+                <td class="product-details" style="padding-left: 100px;">
+
+                  <span class="add-id" style="font-size: 18px; color: black; font-weight: bold;"><strong>Name:</strong> {{w.worker.first_name}}</span>
+                  <span style="font-size: 18px; color: black; font-weight: bold;"><strong>City :</strong><time>{{w.city.city_name}}</time> </span>
+                  <span style="font-size: 18px; color: black; font-weight: bold;"><strong>Area :</strong>{{w.area.area_name}}</span>
+                  <span style="font-size: 18px; color: black; font-weight: bold;"><strong>Category :</strong>{{w.category.category_name}}</span>
+                </td>
+                <td class="text-center" style="padding-left: 80px;">
+                  <div class="">
+                    <button type="button" class="btn btn-rounded btn-primary waves-effect waves-light" fdprocessedid="v8ulb3"><a href="/user/view_worker_details/{{w.id}}" style="color: white;">View Details</a></button>
+                  </div>
+
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+    <!-- Row End -->
+  </div>
+  <!-- Container End -->
+</section>
+
+
+{% endblock %}

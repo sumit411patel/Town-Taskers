@@ -1,0 +1,45 @@
+{% extends 'myadmin/common/layout.html' %}
+{% load static %}
+
+{% block title %} Area {% endblock %}
+
+{% block content %}
+<div class="content-wrapper">
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title text-center">All Area</h4>
+            <hr>
+            <div class="table-responsive">
+              <table class="table table-striped text-center">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Area Name</th>
+                    <th>City Name</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for a in areas %}
+                  <tr class="active">
+                    <th scope="row">{{a.id}}</th>
+                    <td>{{a.area_name}}</td>
+                    <td>{{a.city.city_name}}</td>
+                    <!-- <td><button type="button" class="btn btn-primary">Edit</button></td>
+                    <td><button type="button" class="btn btn-danger">Delete</button></td> -->
+                    <td><a href="/myadmin/edit_area/{{a.id}}"><input type="submit" class="btn btn-primary" name="submit" value="Edit"></a></td>         
+                    <td><a href="/myadmin/delete_area/{{a.id}}"><input type="submit" class="btn btn-danger" name="submit" value="Delete"></a></td>        
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

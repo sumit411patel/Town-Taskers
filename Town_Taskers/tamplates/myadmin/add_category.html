@@ -1,0 +1,45 @@
+{% extends 'myadmin/common/layout.html' %}
+{% load static %}
+
+{% block title %} Catagories {% endblock %}
+
+{% block content %}
+<script>
+  function data(){ 
+  var j=document.getElementById("category").value;
+   if(j=="")
+   {
+    alert("please enter category name")
+    return false;
+   }
+   else{
+    return true;
+   }
+  }
+</script>
+<div class="content-wrapper">
+    <div class="row">
+      <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <!-- <h4 class="card-title text-center">Add Services</h4> -->
+            <h4 class="card-title text-center">Add Category</h4>
+            <form class="forms-sample" novalidate="novalidate"  onsubmit="return data()" method="post" action="/myadmin/add_category_store">
+              {% csrf_token %}
+              <!-- <div class="form-group">
+                <label for="exampleInputName1">Service Name</label>
+                <input type="text" class="form-control" id="exampleInputName1" placeholder="Service Name">
+              </div> -->
+
+              <div class="form-group">
+                <label for="exampleInputName1">Category Name</label>
+                <input type="text" name="category" id="category" class="form-control" required="" placeholder="Category name">
+              </div>
+              <button type="submit" class="btn btn-primary mr-2">Add Catagory</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

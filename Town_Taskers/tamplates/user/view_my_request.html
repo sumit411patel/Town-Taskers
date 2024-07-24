@@ -1,0 +1,150 @@
+{% extends 'user/common/layout.html' %}
+{% block content %}
+
+{% load static %}
+
+
+<section class="page-title">
+  <!-- Container Start -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 text-center">
+        <!-- Title text -->
+        <h3>View Post Details</h3>
+      </div>
+    </div>
+  </div>
+  <!-- Container End -->
+</section>
+
+<section class="dashboard section">
+  <!-- Container Start -->
+  <div class="container">
+    <!-- Row Start -->
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="sidebar">
+          <!-- User Widget -->
+          <div class="widget user">
+            <!-- User Image -->
+            <div class="image d-flex justify-content-center">
+              <img src="/media/upload/{{result1.user_image}}" alt="" class="">
+            </div>
+            <!-- User Name -->
+            <h5 class="text-center">{{result1.user.first_name}} {{result1.user.last_name}}</h5>
+            <div class="text-center">
+              <a href="/user/user_edit_profile" class="btn btn-main-sm">Edit Profile</a>
+            </div> 
+          </div>
+          <!-- Dashboard Links -->
+          <div class="widget user-dashboard-menu">
+            <ul>
+              <li class="active">
+                <a href="/user/post_problem"><i class="fa fa-user"></i>All Posts</a></li>
+              <li>
+                <a href="/user/myrequest"><i class="fa fa-bookmark-o"></i>Add Post</a>
+              </li>
+              <li>
+                <a href="/user/changepass"><i class="fa fa-file-archive-o"></i>Change Password</a>
+              </li>
+              <li>
+                <a href="/user/logout"><i class="fa fa-cog"></i> Logout</a>
+              </li>
+              <!-- <li>
+                <a href="#!" data-toggle="modal" data-target="#deleteaccount"><i class="fa fa-power-off"></i>Delete Account</a>
+              </li> -->
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <!-- Recently Favorited -->
+        <div class="widget dashboard-container my-adslist">
+          <h3 class="widget-header">My Request</h3>
+          <table cellpadding="10">
+              <tr>                
+                  <td rowspan="9">
+                    <img width="200" height="150" width="150" src="/media/upload/{{requests.problem_image}}" alt="not found">
+                  </td>
+                  <td style="padding: 0px 0px 0px 50px;">Subject :</td>
+                  <td>{{requests.subject}}</td>
+                  <td class="action" data-title="Action" rowspan="9" style="padding: 0px 0px 0px 50px;">
+                    <div class="">
+                    <ul class="list-inline justify-content-center">
+                      <li class="list-inline-item">
+                        <a data-toggle="tooltip" data-placement="top" title="Edit" class="view" href="/user/request_edit/{{requests.id}}">
+                          <i class="fa fa-pencil"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a class="delete" data-toggle="tooltip" data-placement="top" title="Delete" href="/user/post_problem_delete/{{requests.id}}">
+                          <i class="fa fa-trash"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  </td>
+              </tr>
+              <tr>
+              </tr>
+              <tr>
+                <td style="padding: 0px 0px 0px 50px;">Description :</td>             
+                <td>{{requests.problem_description}}</td>
+              </tr>
+              <tr>
+                <td style="padding: 0px 0px 0px 50px;">Address :</td>
+                <td>{{requests.address}}</td>
+              </tr>
+              <tr>
+                <td style="padding: 0px 0px 0px 50px;">Category :</td>
+                <td>{{requests.category.category_name}}</td>
+              </tr> 
+              <tr>
+                <td style="padding: 0px 0px 0px 50px;">Sub Category :</td>
+                <td>{{requests.subcategory.sub_category_name}}</td>
+              </tr> 
+              <tr>
+                <td style="padding: 0px 0px 0px 50px;">City :</td>
+                <td>{{requests.city.city_name}}</td>
+              </tr>              
+              <tr>
+                <td style="padding: 0px 0px 0px 50px;">Area :</td>
+                <td>{{requests.area.area_name}}</td>
+              </tr>
+              <tr>
+                <td style="padding: 0px 0px 0px 50px;">Image Name :</td>
+                <td>{{requests.problem_image}}</td>
+              </tr>
+          </table>
+
+        </div>
+
+        <!-- pagination -->
+        <!-- <div class="pagination justify-content-center">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link" href="dashboard.html" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="dashboard.html">1</a></li>
+              <li class="page-item active"><a class="page-link" href="dashboard.html">2</a></li>
+              <li class="page-item"><a class="page-link" href="dashboard.html">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="dashboard.html" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div> -->
+        <!-- pagination -->
+
+    </div>
+  </div>
+</div>
+</section>
+{% endblock %}

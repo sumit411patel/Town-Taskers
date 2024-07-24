@@ -1,0 +1,69 @@
+{% extends 'user/common/layout.html' %}
+{% block content %}
+
+{% load static %}
+
+
+<section class="page-title">
+  <!-- Container Start -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 text-center">
+        <!-- Title text -->
+        <h3>View Worker Details</h3>
+      </div>
+    </div>
+  </div>
+  <!-- Container End -->
+</section>
+
+<section class="dashboard section">
+  <!-- Container Start -->
+  <div class="container">
+    <!-- Row Start -->
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <!-- Recently Favorited -->
+        <div class="widget dashboard-container my-adslist">
+          <h3 class="widget-header text-center">View Worker Details</h3>
+          <table cellpadding="10" align="center">
+              <tr>                
+                  <td rowspan="9">
+                    <img width="200" height="150" width="150" src="/media/upload/{{worker.worker_image}}" alt="not found">
+                  </td>
+                  <td style="padding: 0px 0px 0px 50px;">Name :</td>
+                  <td>{{worker.worker.first_name}} {{worker.worker.last_name}}</td>
+              </tr>
+              <tr>
+              </tr>
+              <tr>
+                <td style="padding: 0px 0px 0px 50px;">Address :</td>
+                <td>{{worker.address}}</td>
+              </tr>
+              <tr>
+                <td style="padding: 0px 0px 0px 50px;">Category :</td>
+                <td>{{worker.category.category_name}}</td>
+              </tr> 
+              <tr>
+                <td style="padding: 0px 0px 0px 50px;">Sub Category :</td>
+                <td>{{worker.subcategory.sub_category_name}}</td>
+              </tr> 
+              <tr>
+                <td style="padding: 0px 0px 0px 50px;">City :</td>
+                <td>{{worker.city.city_name}}</td>
+              </tr>              
+              <tr>
+                <td style="padding: 0px 0px 0px 50px;">Area :</td>
+                <td>{{worker.area.area_name}}</td>
+              </tr>
+              <tr>
+                <td style="padding: 0px 0px 0px 50px;">Description :</td>             
+                <td>{{worker.work_description}}</td>
+              </tr>
+          </table>
+        </div>
+    </div>
+  </div>
+</div>
+</section>
+{% endblock %}

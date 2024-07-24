@@ -1,0 +1,53 @@
+{% extends 'user/common/layout.html' %}
+{% block title %} Town Taskers {% endblock %}
+{% block content %}
+
+<!-- Page Title -->
+<section class="page-title">
+  <!-- Container Start -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 text-center">
+        <!-- Title text -->
+        <h3>Login</h3>
+      </div>
+    </div>
+  </div>
+  <!-- Container End -->
+</section>
+<!-- Page Title End -->
+
+<section class="login py-5 border-top-1">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-5 col-md-8 align-item-center">
+        <div class="border">
+          <h3 class="bg-gray p-4">Login Now</h3>
+          <form method="post" action="/user/login_check">
+            {% csrf_token %} 
+            <fieldset class="p-4">
+              <input class="form-control mb-3" type="text" name="username" id="username" placeholder="Username*" required pattern="[A-Za-z0-9]{2,32}">
+              <input class="form-control mb-3" type="password" name="password" id="password" placeholder="Password*" required title="please enter password?">
+              <!-- <div class="loggedin-forgot">
+                <input type="checkbox" id="keep-me-logged-in">
+                <label for="keep-me-logged-in" class="pt-3 pb-2">Keep me logged in</label>
+              </div> -->
+              {% if messages %}
+              <ul class="messages">
+              {% for message in messages %}
+                <li class="text-success" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+              {% endfor %}
+              </ul>
+              {% endif %}
+              <button type="submit" class="btn btn-primary font-weight-bold mt-3">Log in</button>
+              <!-- <a class="mt-3 d-block text-primary" href="#!">Forget Password?</a> -->
+              <a class="mt-3 d-inline-block text-primary" href="/user/user_register"> Get Register Here </a>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

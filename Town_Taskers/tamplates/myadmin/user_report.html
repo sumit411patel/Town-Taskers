@@ -1,0 +1,64 @@
+{% extends 'myadmin/common/layout.html' %}
+{% load static %}
+
+{% block title %} Customer Report {% endblock %}
+
+{% block content %}
+<div class="content-wrapper">
+    <div class="row">
+      <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title text-center">Customer</h4>
+            <form class="forms-sample" action="#" method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>From:-</label>
+                            <input type="date" name="from_date" id="from_date" class="mydate form-control" value="{{f}}" autocomplete="off" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>To:-</label>
+                            <input type="date" name="to_date" id="to_date" class="mydate form-control" value="{{t}}" autocomplete="off" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="submit" id="submit" name="submit" value="Search" class="btn btn-primary">
+                            <a href="/myadmin/user_pdf" class="btn btn-primary">Export</a>
+                        </div>
+                    </div>
+                </div>
+              </form>
+              
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Contact Number</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for users in user %}
+                    <tr>
+                        <td>{{users.id}}</td>
+                        <td>{{users.user.username}}</td>
+                        <td>{{users.user.email}}</td>
+                        <td>{{users.contact}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

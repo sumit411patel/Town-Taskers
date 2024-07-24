@@ -1,0 +1,90 @@
+{% extends 'user/common/layout.html' %}
+{% block content %}
+<script>
+    function data(){
+    var c=document.getElementById("cat").value;
+     if(c=="")
+     {
+      alert("please select category")
+      return false;
+     }
+     else{
+      return true;
+     }
+    }
+  </script>
+<section class="page-title">
+	<!-- Container Start -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 offset-md-2 text-center">
+				<!-- Title text -->
+				<h3>Contact Us</h3>
+			</div>
+		</div>
+	</div>
+	<!-- Container End -->
+</section>
+<!-- page title -->
+
+<!-- contact us start-->
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="contact-us-content p-4">
+                    <h5>Contact Us</h5>
+                    <h1 class="pt-3">Hello, what's on your mind?</h1>
+                    <p class="pt-3 pb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla elit dolor, blandit vel euismod ac, lentesque et dolor. Ut id tempus ipsum.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                    <form method="post" onsubmit="return data()" action="/user/contact_store">
+                        {% csrf_token %}
+                        <fieldset class="p-4">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-lg-6 py-2">
+                                        <input type="text" name="name" id="name" placeholder="Name*" class="form-control" required  pattern="[A-Za-z]{2,32}">
+                                    </div>
+                                    <div class="col-lg-6 pt-2">
+                                        <input type="email" name="email" id="email" placeholder="Email *" class="form-control" required  pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-lg-6 py-2">
+                                        <select name="cat" id="cat" class="form-control w-100">
+                                            <option value="">Select Category</option>
+                                            <option value="Electrical">Electrical</option>
+                                            <option value="Plumber">Plumber</option>
+                                            <option value="Carpenter">Carpenter</option>
+                                            <option value="Painter">Painter</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-6 py-2">
+                                        <input class="form-control mb-3" ng-model="model.number" name="contact" id="contact" pattern="[0-9]{10}" type="phone" placeholder="Contact*" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <textarea name="message" id="message"  placeholder="Message *" class="border w-100 p-3 mt-3 mt-lg-4" required></textarea>
+                            <div class="btn-grounp0">
+                                <button type="submit" class="btn btn-primary mt-2 float-right">SUBMIT</button>
+                            </div>
+                            {% if messages %}
+                            <ul class="messages">
+                            {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </fieldset>
+                    </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

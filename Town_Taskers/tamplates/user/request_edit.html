@@ -1,0 +1,146 @@
+{% extends 'user/common/layout.html' %}
+{% block content %}
+
+<!-- Page Title -->
+<section class="page-title">
+  <!-- Container Start -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 text-center">
+        <!-- Title text -->
+        <h3>Update Your Post</h3>
+      </div>
+    </div>
+  </div>
+  <!-- Container End -->
+</section>
+<!-- Page Title End -->
+
+<section class="login py-5 border-top-1">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-4">
+        <div class="sidebar">
+          <!-- User Widget -->
+          <div class="widget user">
+            <!-- User Image -->
+            <div class="image d-flex justify-content-center">
+              <img src="/media/upload/{{result5.user_image}}" alt="" class="">
+            </div>
+            <!-- User Name -->
+            <h5 class="text-center">{{result5.user.first_name}} {{result5.user.last_name}}</h5>
+          </div>
+          <!-- Dashboard Links -->
+          <div class="widget user-dashboard-menu">
+            <ul>
+              <li><a href="/user/post_problem">Add Post</a></li>
+              <li><a href="/user/all_requests">My Posts</a></li>
+              <li><a href="/user/changepass">Change Password</a></li>
+              <li><a href="/user/logout"><i class="fa fa-cog"></i>Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8 col-md-8 align-item-center">
+        <div class="border border">
+          <h3 class="bg-gray p-4 text-center">Post</h3>
+            <center>
+              <img src="/media/upload/{{result.problem_image}}" height="150" width="150">
+            </center>
+          <form method="post" action="/user/request_update/{{result.id}}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="p-4">
+              <div class="text-center">
+                {% if messages %}
+              <ul class="messages">
+              {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+              {% endfor %}
+              </ul>
+              {% endif %}
+              </div>
+              
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <label for="exampleInputFile">Category*</label>
+                    <select class="form-control mb-3" name="categoryname" id="categoryname" required>
+                    <option value="Select a category" selected>Select a Category</option>
+
+                    {% for c in categories %}
+                    <option value="{{c.id}}" {% if result.category_id == c.id %} selected {% endif %}>{{c.category_name}}</option>
+                    {% endfor %}   
+                    </select>
+                  </div>
+                  <div class="col-lg-6">
+                    <label for="exampleInputFile">Sub Category*</label>
+                    <select class="form-control mb-3" name="subcategoryname" id="subcategoryname">
+                    <option value="Select a category" selected>Select a Sub Category</option>
+
+                    {% for s in sub_categories %}
+                    <option value="{{s.id}}" {% if result.subcategory_id == s.id %} selected {% endif %}>{{s.sub_category_name}}</option>
+                    {% endfor %}   
+                  </select> 
+                  </div>                
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <label for="exampleInputFile">Subject*</label>
+                    <input class="form-control mb-3" type="text" name="subject" id="subject" placeholder="Subject" value="{{result.subject}}" required>
+                  </div>
+                  <div class="col-lg-6">
+                    <label for="exampleInputFile">Image*</label>
+                    <input class="form-control p-2" type="file" name="pimg" id="pimg" value="/media/upload/{{result.problem_image}}">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <label for="exampleInputFile">Description*</label>
+                    <textarea name="pdesc" id="pdesc" class="form-control mb-3 ng-invalid ng-invalid-required ng-valid-pattern ng-touched" rows="3" placeholder="Description*" required>{{result.problem_description}}</textarea>
+                  </div>
+                  <div class="col-lg-6">
+                    <label for="exampleInputFile">Address*</label>
+                    <textarea name="address" id="address" class="form-control mb-3 ng-invalid ng-invalid-required ng-valid-pattern ng-touched" rows="3" placeholder="Address*" required>{{result.address}}</textarea>   
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <label for="exampleInputFile">City*</label>
+                    <select class="form-control mb-3" name="cityname" id="cityname">
+                      <option value="Select a city" selected>Select a City</option>
+
+                      {% for cy in cities %}
+                      <option value="{{cy.id}}" {% if result.city_id == cy.id %} selected {% endif %}>{{cy.city_name}}</option>
+                      {% endfor %}   
+                    </select>                    
+                  </div>
+                  <div class="col-lg-6">
+                    <label for="exampleInputFile">Area*</label>
+                    <select class="form-control mb-3" name="areaname" id="areaname">
+                      <option value="Select a Area" selected>Select a Area</option>
+
+                      {% for a in areas %}
+                      <option value="{{a.id}}" {% if result.area_id == a.id %} selected {% endif %}>{{a.area_name}}</option>
+                      {% endfor %}   
+                    </select>   
+                  </div>
+                </div>
+              </div>
+              <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary font-weight-bold mt-3">Update</button>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

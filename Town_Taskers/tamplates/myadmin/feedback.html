@@ -1,0 +1,44 @@
+{% extends 'myadmin/common/layout.html' %}
+{% load static %}
+
+{% block title %} Feedbacks {% endblock %}
+
+{% block content %}
+<div class="content-wrapper">
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title text-center">Feedbacks</h4>
+            <hr>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                  {% csrf_token %}
+                  <thead>
+                    <tr>
+                      <th>id</th>
+                      <th>Rating</th>
+                      <th>Comment</th>
+                      <th>User Id</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for f in feedback %}
+                    <tr class="active">
+                      <th scope="row">{{f.id}}</th>
+                      <td>{{f.rating}}</td>
+                      <td>{{f.comment}}</td>
+                      <td>{{f.user.first_name}} {{f.user.last_name}}</td>
+                      <td>{{f.date}}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

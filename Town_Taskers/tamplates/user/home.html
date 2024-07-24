@@ -1,0 +1,379 @@
+{% extends 'user/common/layout.html' %}
+{% block content %}
+
+{% load static %}
+<script>
+    function data(){
+    var c=document.getElementById("category").value;
+	var k=document.getElementById("subcate").value;
+     if(c=="")
+     {
+      alert("please select category")
+      return false;
+     }
+	 if(k=="")
+     {
+      alert("please select subcategory")
+      return false;
+     }
+     else{
+      return true;
+     }
+    }
+  </script>
+<section class="hero-area bg-1 text-center overly">
+
+	<!-- Container Start -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<!-- Header Contetnt -->
+				<div class="content-block">
+					<h1>Find Workers Near You </h1>
+					<p>Join the millions who buy and sell from each other <br> everyday in local communities around the world</p>
+					<!-- <div class="short-popular-category-list text-center">
+						<h2>Category</h2>
+						<ul class="list-inline">
+							<li class="list-inline-item">
+								<a href="/user/all_electricians"><i class="fa fa-bed"></i> Electrial</a></li>
+								<li class="list-inline-item">
+									<a href="category.html"><i class="fa fa-grav"></i>Carpenter</a>
+								</li>
+								<li class="list-inline-item">
+									<a href="/user/all_plumbers"><i class="fa fa-car"></i>Plumber</a>
+								</li>
+								<li class="list-inline-item">
+									<a href="category.html"><i class="fa fa-cutlery"></i>Painter</a>
+								</li>
+							</ul>
+						</div> -->
+
+					</div>
+	<!-- Advance Search -->
+					<div class="advance-search">
+						<div class="container">
+							<div class="row justify-content-center">
+								<div class="col-lg-12 col-md-12 align-content-center">
+									<form method="post" onsubmit="return data()" action="/user/search_worker">
+										{% csrf_token %}
+										<div class="form-row">
+											<div class="form-group col-lg-5 col-md-6">
+												<select class="w-100 form-control mt-lg-1 mt-md-2" name="scate" id="category" required>
+													<option value="" selected>Select Category</option>
+													{% for c in categories %}
+                									<option value="{{c.id}}">{{c.category_name}}</option>
+                									{% endfor %}
+												</select>
+											</div>
+											<div class="form-group col-lg-5 col-md-6">
+												<select class="w-100 form-control mt-lg-1 mt-md-2" name="subcate" id="subcat" required>
+													<option value="" selected>select subcategory</option>
+													{% for s in subcategories %}
+													<option value="{{s.id}}">{{s.sub_category_name}}</option>
+													{% endfor %}
+												</select>
+											</div>
+											<div class="form-group col-xl-2 col-lg-3 col-md-6 align-self-center">
+												
+													<button type="submit" class="btn btn-primary active w-100">Search Now</button>
+												
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+
+				</div>
+			</div>
+		</div>
+		<!-- Container End -->
+	</section>
+
+
+<!-- ============== Description 1 ================ -->
+
+ <div class="container-xxl py-5" style="margin-top: 140px;">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="h-100">
+                        <h1 class="display-6 mb-5">Welcome To Best Home Repair Service </h1>
+                        <div class="row g-4 mb-4">
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center">
+                                    <img class="flex-shrink-0 me-0" src="{% static 'user/images/icon/icon-07-primary.png' %}" alt="">
+                                    <h5 class="mb-0">Expert Workers</h5>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-center">
+                                    <img class="flex-shrink-0 me-3" src="{% static 'user/images/icon/icon-09-primary.png' %}" alt="">
+                                    <h5 class="mb-0">Best Quality Services</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mb-4">Complete repairs for your home.</br>High-quality workmanship at great prices.</p>
+                        <div class="border-top mt-4 pt-4">
+                           <!--  <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="d-flex align-items-center">
+                                        <div class="btn-lg-square bg-primary rounded-circle me-3">
+                                            <i class="fa fa-phone-alt text-white"></i>
+                                        </div>
+                                        <h5 class="mb-0">+012 345 6789</h5>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="d-flex align-items-center">
+                                        <div class="btn-lg-square bg-primary rounded-circle me-3">
+                                            <i class="fa fa-envelope text-white"></i>
+                                        </div>
+                                        <h5 class="mb-0">info@example.com</h5>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                   <div class="row g-3">
+                        <div class="col-6 text-end">
+                            <img class="img-fluid w-75 wow zoomIn" data-wow-delay="0.1s" src="{% static 'user/images/home/e2.jpg' %}" style="margin-top: 18%; margin-left: 80px;">
+                        </div>
+                        <div class="col-6 text-start">
+                            <img class="img-fluid w-100 wow zoomIn" data-wow-delay="0.3s" src="{% static 'user/images/home/carpenter.jpeg' %}"> 
+                        </div>
+                        <div class="col-6 text-end wow zoomIn" style="margin-top:10px;">
+                            <img class="img-fluid w-50 wow zoomIn" data-wow-delay="0.5s" src="{% static 'user/images/home/p1.jpg' %}" style="margin-left: 150px;">
+                        </div>
+                        <div class="col-6 text-start">
+                            <img class="img-fluid w-75 wow zoomIn" data-wow-delay="0.7s" src="{% static 'user/images/home/plumber.jpeg' %}" style="margin-top:4%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- =================== Description 2================= -->
+ <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <h1 class="display-6 mb-5">Few Reasons Why People Choosing Us!</h1>
+                    <p class="mb-5" style="font-size:21px;">online home services, you can easily schedule appointments and receive services without leaving your home.</p>
+                    <div class="d-flex mb-5">
+                        <div class="flex-shrink-0 btn-square bg-primary rounded-circle" style="width: 70px; height: 70px; padding-left: 9px; padding-top: 7px;"> 
+                            <img class="img-fluid" src="{% static 'user/images/icon/icon-08-light.png' %}" alt="">
+                        </div>
+                        <div class="ms-4">
+                            <h5 class="mb-3" style="margin-top:20px; margin-left: 5px;">Trusted Service</h5>
+                            <!-- <span>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos.</span> -->
+                        </div>
+                    </div>
+                    <div class="d-flex mb-5">
+                        <div class="flex-shrink-0 btn-square bg-primary rounded-circle" style="width: 70px; height: 70px; padding-left: 9px; padding-top: 7px; ">
+                            <img class="img-fluid" src="{% static 'user/images/icon/icon-10-light.png' %}" alt="">
+                        </div>
+                        <div class="ms-4">
+                            <h5 class="mb-3" style="margin-top:20px; margin-left: 5px;">Reasonable Price</h5>
+                            <!-- <span>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos.</span> -->
+                        </div>
+                    </div>
+                    <div class="d-flex mb-0">
+                        <div class="flex-shrink-0 btn-square bg-primary rounded-circle" style="width: 70px; height: 70px; padding-left: 9px; padding-top: 7px;" >
+                            <img class="img-fluid" src="{% static 'user/images/icon/icon-06-light.png' %}" alt="">
+                        </div>
+                        <div class="ms-4">
+                            <h5 class="mb-3" style="margin-top:20px; margin-left: 5px;">24/7 Supports</h5>
+                            <!-- <span>Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos.</span> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-wow-delay="0.5s"><!-- wow fadeInUp -->
+                    <div class="position-relative rounded overflow-hidden h-100" style="min-height: 400px;">
+                        <img class="position-absolute w-100 h-100" src="{% static 'user/images/home/home.png' %}" alt="" style="object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<!--===========================================
+=            Popular deals section            =
+============================================-->
+
+<section class="popular-deals section bg-gray">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="section-title">
+					<h2 style="font-size: 35px; background: -webkit-linear-gradient(Blue, black);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">Services</h2>
+					<h3 style="font-size: 25px;">One stop solution for your services! Book Any Service Anytime.</h3>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4">
+				<div class="product-item bg-light">
+					<div class="card">
+						<div class="thumb-content">
+									<!-- <div class="price">$200</div> -->
+							<a href="/user/all_electricians">
+								<img class="card-img-top img-fluid" src="{% static 'user/images/home/e3.webp' %}"alt="Card image cap">
+							</a>
+						</div>
+						<div class="card-body">
+							<h4 class="card-title"><a href="/user/all_electricians">Electricians</a></h4>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="product-item bg-light">
+					<div class="card">
+						<div class="thumb-content">
+									<!-- <div class="price">$200</div> -->
+							<a href="/user/all_carpenters">
+								<img class="card-img-top img-fluid" src="{% static 'user/images/home/n5.jpg' %}"alt="Card image cap">
+							</a>
+						</div>
+						<div class="card-body">
+							<h4 class="card-title"><a href="/user/all_carpenters">Carpenter</a></h4>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="product-item bg-light">
+					<div class="card">
+						<div class="thumb-content">
+									<!-- <div class="price">$200</div> -->
+							<a href="/user/all_plumbers">
+								<img class="card-img-top img-fluid" src="{% static 'user/images/home/p4.jpg' %}"alt="Card image cap">
+							</a>
+						</div>
+						<div class="card-body">
+							<h4 class="card-title"><a href="/user/all_plumbers">Plumber</a></h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="product-item bg-light">
+					<div class="card">
+						<div class="thumb-content">
+									<!-- <div class="price">$200</div> -->
+							<a href="/user/all_painters">
+								<img class="card-img-top img-fluid" src="{% static 'user/images/home/paint3.jpg' %}"alt="Card image cap">
+							</a>
+						</div>
+						<div class="card-body">
+							<h4 class="card-title"><a href="/user/all_painters">Painter</a></h4>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="col-md-4">
+				<div class="product-item bg-light">
+					<div class="card">
+						<div class="thumb-content">
+								<a href="/user/search_worker">
+								<img class="card-img-top img-fluid" src="{% static 'user/images/home/carpenter-3.png' %}"alt="Card image cap">
+							</a>
+						</div>
+						<div class="card-body">
+							<h4 class="card-title"><a href="/user/search_worker">Carpenter</a></h4>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="product-item bg-light">
+					<div class="card">
+						<div class="thumb-content">
+							<a href="/user/search_worker">
+								<img class="card-img-top img-fluid" src="{% static 'user/images/home/plumber.png' %}"alt="Card image cap">
+							</a>
+						</div>
+						<div class="card-body">
+							<h4 class="card-title"><a href="/user/search_worker">Plumber</a></h4>
+						</div>
+					</div>
+				</div>
+			</div> -->
+		</div>
+		
+	</div>
+</section>
+
+
+
+<!--==========================================
+=            Newsletter Section            =
+===========================================-->
+
+<!--  <div class="newsletter-bg padding-top-90 padding-bottom-90">
+      <div class="container">
+          <div class="row">
+              <div class="col-xl-5 col-lg-6">
+                  <div class="newsletter-wrap">
+                      <h3>Newsletter</h3>
+                      <p>Get e-mail updates about our latest news and Special offers. We don’t send spam so don’t
+                          worry.</p>
+                      <form action="#" class="newsletter-form form-inline">
+                          <div class="form-group">
+                              <input type="text" class="form-control" placeholder="Email address...">
+                          </div>
+                          <button class="btn button">Submit<i class="fas fa-caret-right"></i></button>
+                          <p class="newsletter-error">0 - Please enter a value</p>
+                          <p class="newsletter-success">Thank you for subscribing!</p>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+ -->
+
+<!--====================================
+=            Call to Action            =
+=====================================-->
+
+
+{% endblock %}
+
+
+{% block scripts %}
+  <script type="text/javascript">
+  	function get_subcategories()
+  	{
+  		var cat_id = $("#category").val();
+  		$.ajax({
+  			type:'GET',
+  			url:'/user/get_subcategories_by_id',
+  			data : {
+  				cat_id : cat_id
+  			},
+  			success:function(result)
+  			{
+  				$("#subcat").html(result);
+  			}
+  		});
+  	}
+  </script>
+{% endblock %}
+
+
+
+
+

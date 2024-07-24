@@ -1,0 +1,79 @@
+{% extends 'myadmin/common/layout.html' %}
+{% load static %}
+
+{% block title %} Customers {% endblock %}
+
+{% block content %}
+<div class="content-wrapper">
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title text-center">Customer Details</h4>
+            <hr>
+            <div style="text-align: center;">
+              <img src="/media/upload/{{users.user_image}}" style="height: 250px;width: 250px;margin: 20px 0px;">
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Field_Name</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="active">
+                          <th scope="row">id</th>
+                          <td>{{users.id}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">First Name</th>
+                          <td>{{users.user.first_name}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Last Name</th>
+                          <td>{{users.user.last_name}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Email</th>
+                          <td>{{users.user.email}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Username</th>
+                          <td>{{users.user.username}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Contact</th>
+                          <td>{{users.contact}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">DOB</th>
+                          <td>{{users.date_of_birth}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Gender</th>
+                          <td>{{users.gender}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">City</th>
+                          <td>{{users.city.city_name}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Area</th>
+                          <td>{{users.area.area_name}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Address</th>
+                          <td>{{users.address}}</td>
+                        </tr>
+                      </tbody>
+                </table>
+                <a href="/myadmin/all_users"><input type="button" value="Back" class="btn btn-primary mr-2 ml-1 mt-3 mb-2"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

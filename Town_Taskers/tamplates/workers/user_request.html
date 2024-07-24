@@ -1,0 +1,104 @@
+{% extends 'workers/common/layout.html' %}
+{% block content %}
+
+
+<section class="page-title">
+  <!-- Container Start -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 text-center">
+        <!-- Title text -->
+        <h3>User Requests</h3>
+      </div>
+    </div>
+  </div>
+  <!-- Container End -->
+</section>
+
+<section class="dashboard section">
+  <!-- Container Start -->
+  <div class="container">
+    <!-- Row Start -->
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="sidebar">
+          <!-- User Widget -->
+          <div class="widget user">
+            <!-- User Image -->
+            <div class="image d-flex justify-content-center">
+              <img src="/media/upload/{{result.worker_image}}" alt="" class="">
+            </div>
+            <!-- User Name -->
+            <h5 class="text-center">{{result.worker.first_name}} {{result.worker.last_name}}</h5>
+            <div class="text-center">
+              <a href="/workers/worker_edit_profile" class="btn btn-main-sm">Edit Profile</a>
+            </div> 
+          </div>
+          <!-- Dashboard Links -->
+          <div class="widget user-dashboard-menu">
+            <ul>
+              <li class="active">
+                <a href="/workers/user_request"><i class="fa fa-user"></i>User Requests</a></li>
+              <li>
+                <a href="/user/changepass"><i class="fa fa-file-archive-o"></i>Change Password</a>
+              </li>
+              <li>
+                <a href="/user/logout"><i class="fa fa-cog"></i> Logout</a>
+              </li>
+             
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <!-- Recently Favorited -->
+        <div class="widget dashboard-container my-adslist">
+          <h3 class="widget-header">My Posts</h3>
+          <table class="table table-responsive product-dashboard-table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Details</th>
+                <th class="text-center">Description</th>
+                <th class="text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+               {% for ur in urequests %}
+              <tr>
+                <td class="product-thumb">
+                  <img width="80px" height="auto" src="/media/upload/{{ur.problem_image}}" alt="image description"></td>
+                <td class="product-details">
+                  <span class="add-id"><strong>User:</strong> {{ur.user.first_name}}</span>
+                  <span class="add-id"><strong>Contact:</strong> {{ur.user.user_profile.contact}}</span>
+                  <span><strong>City :</strong><time>{{ur.city.city_name}}</time> </span>
+                  <span><strong>Area :</strong>{{ur.area.area_name}}</span>
+                </td>
+                <td class="product-category"><span class="categories">{{ur.problem_description}}</span></td>
+                <td class="action" data-title="Action">
+                  <div class="">
+                    <ul class="list-inline justify-content-center">
+                      <li class="list-inline-item">
+                        <a data-toggle="tooltip" data-placement="top" title="View" class="view" href="/workers/view_user_request/{{ur.id}}">
+                          <i class="fa fa-eye"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+        </div>
+      </div>
+    </section>
+
+
+    
+
+
+{% endblock %}

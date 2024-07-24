@@ -1,0 +1,44 @@
+{% extends 'myadmin/common/layout.html' %}
+{% load static %}
+
+{% block title %} Sub Catagories {% endblock %}
+
+{% block content %}
+<div class="content-wrapper">
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title text-center">All Sub categories</h4>
+            <hr>
+            <div class="table-responsive">
+                <table class="table table-striped text-center">
+                  {% csrf_token %}
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Sub Category Name</th>
+                            <th>Category Name</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      {% for s in sub_categories %}
+                      <tr class="active">
+                        <th scope="row">{{s.id}}</th>
+                        <td>{{s.sub_category_name}}</td>
+                        <td>{{s.category.category_name}}</td>
+                        <td><a href="/myadmin/edit_sub_category/{{s.id}}"><input type="submit" class="btn btn-primary" name="submit" value="Edit"></a></td>         
+                        <td><a href="/myadmin/delete_sub_category/{{s.id}}"><input type="submit" class="btn btn-danger" name="submit" value="Delete"></a></td>        
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

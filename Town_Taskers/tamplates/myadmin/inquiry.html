@@ -1,0 +1,48 @@
+{% extends 'myadmin/common/layout.html' %}
+{% load static %}
+
+{% block title %} Inquiries {% endblock %}
+
+{% block content %}
+<div class="content-wrapper">
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title text-center">Inquiries</h4>
+            <hr>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                  {% csrf_token %}
+                  <thead>
+                    <tr>
+                      <th>id</th>
+                      <th>Inquiry Name</th>
+                      <th>Email</th>
+                      <th>Contact</th>
+                      <th>Category</th>
+                      <th>Message</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for c in contact %}
+                    <tr class="active">
+                      <th scope="row">{{c.id}}</th>
+                      <td>{{c.name}}</td>
+                      <td>{{c.email}}</td>
+                      <td>{{c.contact}}</td>
+                      <td>{{c.contact_category}}</td>
+                      <td>{{c.message}}</td>
+                      <td>{{c.date}}</td>
+                    </tr>
+                    {% endfor %}     
+                  </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

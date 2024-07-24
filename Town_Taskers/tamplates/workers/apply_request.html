@@ -1,0 +1,64 @@
+{% extends 'workers/common/layout.html' %}
+{% block content %}
+
+<section class="login py-5 border-top-1">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-4">
+        <div class="sidebar">
+          <!-- User Widget -->
+          <div class="widget user">
+            <!-- User Image -->
+            <div class="image d-flex justify-content-center">
+              <img src="/media/upload/{{result1.worker_image}}" alt="" class="">
+            </div>
+            <!-- User Name -->
+            <h5 class="text-center">{{result1.worker.first_name}} {{result1.worker.last_name}}</h5>
+            <div class="text-center">
+              <a href="/workers/worker_edit_profile" class="btn btn-main-sm">Edit Profile</a>
+            </div> 
+          </div>
+          <!-- Dashboard Links -->
+          <div class="widget user-dashboard-menu">
+            <ul>
+              <li class="active">
+                <a href="/workers/user_request"><i class="fa fa-user"></i>User Requests</a></li>
+              <li>
+                <a href="/user/changepass"><i class="fa fa-file-archive-o"></i>Change Password</a>
+              </li>
+              <li>
+                <a href="/workers/logout"><i class="fa fa-cog"></i> Logout</a>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8   col-md-8 align-item-center">
+        <div class="border border">
+          <h3 class="bg-gray p-4 text-center">Apply</h3>
+          <form method="post" action="/workers/apply_request_store/{{result.id}}">
+            {% csrf_token %}
+            <fieldset class="p-4">
+              
+              
+              <div class="form-group">
+                <label for="exampleInputFile">Apply</label>
+                  <select class="form-control mb-3" name="apply" id="apply"required>
+                    <option value="Select" selected>Select</option>
+                    <option value="accept">Accept</option>   
+                    <option value="reject">Reject</option>     
+                  </select>
+              </div>
+              <textarea name="reason" id="reason" class="form-control mb-3 ng-invalid ng-invalid-required ng-valid-pattern ng-touched" rows="3" placeholder="Reason*" required></textarea>
+              <button type="submit" class="btn btn-primary font-weight-bold mt-3">Apply</button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}

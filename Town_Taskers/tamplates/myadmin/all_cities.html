@@ -1,0 +1,40 @@
+{% extends 'myadmin/common/layout.html' %}
+{% load static %}
+
+{% block title %} City {% endblock %}
+
+{% block content %}
+<div class="content-wrapper">
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title text-center">All City</h4>
+            <hr>
+            <div class="table-responsive">
+                <table class="table table-striped text-center">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>City Name</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                        <tbody>
+                          {% for cy in cities %}
+                          <tr class="active">
+                            <th scope="row">{{cy.id}}</th>
+                            <td>{{cy.city_name}}</td>
+                            <td><a href="/myadmin/edit_city/{{cy.id}}"><input type="submit" class="btn btn-primary" name="submit" value="Edit"></a></td>         
+                            <td><a href="/myadmin/delete_city/{{cy.id}}"><input type="submit" class="btn btn-danger" name="submit" value="Delete"></a></td>         
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

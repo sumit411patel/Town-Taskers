@@ -1,0 +1,39 @@
+{% extends 'myadmin/common/layout.html' %}
+{% load static %}
+
+{% block title %} City {% endblock %}
+
+{% block content %}
+<script>
+  function data(){ 
+  var j=document.getElementById("c1").value;
+   if(j=="")
+   {
+    alert("please enter city name")
+    return false;
+   }
+   else{
+    return true;
+   }
+  }
+</script>
+<div class="content-wrapper">
+    <div class="row">
+      <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title text-center">Add City</h4>
+            <form class="forms-sample" onsubmit="return data()" novalidate="novalidate" method="post" action="/myadmin/add_city_store">
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="exampleInputName1">City Name</label>
+                <input type="text" name="city" id="c1" class="form-control" placeholder="Enter city Name" pattern="[A-Za-z]{4,32}" required>
+              </div>
+              <button type="submit" class="btn btn-primary mr-2">Add City</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

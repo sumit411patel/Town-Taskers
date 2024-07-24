@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Report</title>
+    <style>
+        h1 {
+          text-align: center;
+          font-size: 24px;
+        }
+        td, th {
+          text-align: center;
+        }
+      </style>
+</head>
+<body>
+      <h1 style="text-decoration: underline;">List of Feedbacks</h1>
+      <h3>Report Created On : {{current_date}}</h3>
+      <table border="1" align="center" cellpadding="5" cellspacing="0">
+        <thead>
+                            
+                                 <tr>
+                                    <th>ID</th>
+                                    <th>Customer Name</th>
+                                    <th>Rating</th>
+                                    <th>Comment</th>
+                                    <th>Date</th>
+                                </tr>
+                            
+                        </thead>
+                        <tbody>
+                            {% if data %}
+                               {% for f in data %}
+                                <tr>
+                                  <td>{{f.id}}</td>
+                                  <td>{{f.user.first_name}}</td>
+                                  <td>{{f.rating}}</td>
+                                  <td>{{f.comment}}</td>
+                                  <td>{{f.date}}</td>
+                                </tr>
+                                {% endfor %}
+                            {% else %}
+                                <h5 class="text-center">No Feedbacks Available</h5>
+                            {% endif %}
+                        </tbody>
+      </table>
+</body>
+</html>

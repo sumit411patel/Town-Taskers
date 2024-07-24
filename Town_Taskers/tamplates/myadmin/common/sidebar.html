@@ -1,0 +1,134 @@
+{% load static %}
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+
+      <li class="nav-item">
+        <a class="nav-link" href="/myadmin/dashboard">
+          <i class="fa-solid fa-home mr-3"></i>
+          <span class="menu-title">Dashboard</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#service" aria-expanded="false" aria-controls="service">
+          <i class="fa-solid fa-wrench mr-3"></i>
+          <span class="menu-title">Categories</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="service">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="/myadmin/add_category">Add Category</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/myadmin/all_categories">All Categories</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#subservice" aria-expanded="false" aria-controls="subservice">
+          <i class="fa-solid fa-sitemap mr-3"></i>
+          <span class="menu-title">Sub Category</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="subservice">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="/myadmin/add_sub_category">Add Sub Category</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/myadmin/all_sub_categories">All Sub Categories</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#city" aria-expanded="false" aria-controls="city">
+          <i class="fa-solid fa-city mr-3"></i>
+          <span class="menu-title">City</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="city">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="/myadmin/add_city">Add City</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/myadmin/all_cities">All City</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#area" aria-expanded="false" aria-controls="area">
+          <i class="fa-solid fa-location-dot mr-3"></i>
+          <span class="menu-title">Area</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="area">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="/myadmin/add_area">Add Area</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/myadmin/all_areas">All Area</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/myadmin/all_users">
+          <i class="fa-solid fa-user mr-3"></i>
+          <span class="menu-title">Customers</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/myadmin/all_workers">
+          <i class="fa-solid fa-user-nurse mr-3"></i>
+          <span class="menu-title">Workers</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/myadmin/feedback">
+          <i class="fa-solid fa-message mr-3"></i>
+          <span class="menu-title">Feedbacks</span>
+        </a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="/myadmin/inquiry">
+          <i class="fa-solid fa-comments mr-3"></i>
+          <span class="menu-title">Inquiries</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#report" aria-expanded="false" aria-controls="report">
+          <i class="fa-solid fa-circle-info mr-3"></i>
+          <span class="menu-title">Report</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="report">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="/myadmin/user_report">Customer Report</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/myadmin/worker_report">Worker Report</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/myadmin/feed_report">Feedback Report</a></li>
+          </ul>
+        </div>
+      </li>
+      
+      <!-- <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#report" aria-expanded="false" aria-controls="report">
+          <i class="fa-solid fa-circle-info mr-3"></i>
+          <span class="menu-title">Report</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="report">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="/myadmin/user_report">Customer Report</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/myadmin/worker_report">Worker Report</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/myadmin/feedback_report">Feedback Report</a></li>
+          </ul>
+        </div>
+      </li> -->
+
+      <li class="nav-item">
+        <a class="nav-link" href="/myadmin">
+          <i class="fa-solid fa-power-off mr-3"></i>
+          <span class="menu-title">Log out</span>
+        </a>
+      </li>
+      
+    </ul>
+</nav>
