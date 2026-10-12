@@ -26,8 +26,13 @@ SECRET_KEY = 'django-insecure-*dphq-=9adk__a4@f9xvnd^=gxb=&q8mwquysg-2%_l(psojnv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [ 'localhost','127.0.0.1' ]
+ALLOWED_HOSTS = [ 'localhost','127.0.0.1', 'town-taskers.onrender.com' ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://town-taskers.onrender.com",
+    "http://127.0.0.1:8000",
+    "http://localhost",
+]
 
 # Application definition
 
